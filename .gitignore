@@ -1,0 +1,4 @@
+.design-explorations/
+.DS_Store
+.vercel
+node_modules

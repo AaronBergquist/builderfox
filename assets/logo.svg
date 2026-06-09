@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="BuilderFox geometric fox mark">
+  <title>BuilderFox geometric fox mark</title>
+  <!-- Brand tokens: fox-green #79A84B | crimson #C9304C | ink #23271E -->
+  <polygon fill="#79A84B" points="40,26 90,76 150,76 200,26 212,118 156,158 120,212 84,158 28,118"/>
+  <polygon fill="#C9304C" points="40,26 59,97 28,118"/>
+  <polygon fill="#C9304C" points="200,26 212,118 181,97"/>
+  <polygon fill="#C9304C" points="96,76 144,76 120,108"/>
+  <polygon fill="#23271E" points="64,132 83,117 102,132 83,147"/>
+  <polygon fill="#23271E" points="138,132 157,117 176,132 157,147"/>
+  <polygon fill="#23271E" points="120,174 134,191 120,212 106,191"/>
+</svg>

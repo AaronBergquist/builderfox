@@ -1,0 +1,620 @@
+/* ==========================================================================
+   BuilderFox — builderfox.com
+   Static one-pager. Palette, type, and motifs per brand art direction.
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Palette */
+  --cream: #FAF6EC;
+  --cream-2: #F3EDDD;
+  --ink: #23271E;
+  --fox-green: #79A84B;
+  --moss: #4E7A2E;
+  --crimson: #C9304C;
+
+  /* Tactical grid motif */
+  --grid-line: rgb(35 39 30 / 0.05);
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Avenir Next", Futura, "Helvetica Neue", Arial, sans-serif;
+  --font-body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --text-hero: clamp(2.5rem, 1.2rem + 6vw, 5rem);
+  --text-h2: clamp(1.875rem, 1.1rem + 3vw, 3.25rem);
+  --text-h3: clamp(1.375rem, 1.05rem + 1.5vw, 2rem);
+  --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-small: 0.875rem;
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-pad: clamp(4rem, 6vw + 2rem, 8rem);
+  --facet: 4rem; /* the one diagonal — same slope everywhere */
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: var(--text-hero);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: 800;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--moss);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--crimson);
+}
+
+::selection {
+  background: var(--fox-green);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--crimson);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.panel-ink :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--fox-green);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- Layout helpers ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prose,
+.lead {
+  max-width: 65ch;
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+/* Signature motif: the tactical grid */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100vh;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: var(--cream);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding-block: 1.25rem;
+  border-bottom: 1px solid rgb(35 39 30 / 0.08);
+}
+
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-name span {
+  color: var(--moss);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.site-nav a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--moss);
+  text-decoration: none;
+  position: relative;
+  padding-block: 0.25rem;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--crimson);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 150ms ease-out;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--crimson);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.85em 1.5em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.btn-primary {
+  background: var(--crimson);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* Board-piece lift needs a contrasting edge on ink panels */
+.panel-ink .btn-primary:hover,
+.panel-ink .btn-primary:focus-visible {
+  box-shadow: 4px 4px 0 var(--fox-green);
+}
+
+/* ---------- Eyebrow kickers (tactical mono accent, one per section) ---------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 1rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding-block: clamp(3rem, 5vw + 1.5rem, 6.5rem);
+}
+
+.hero-inner {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hero-copy {
+  max-width: 36rem;
+}
+
+.hero-mark {
+  order: -1;
+}
+
+.hero-mark img {
+  width: min(58vw, 240px);
+  height: auto;
+  margin-inline: auto;
+}
+
+.dot {
+  color: var(--crimson);
+}
+
+.lead {
+  font-size: var(--text-lead);
+  color: var(--ink);
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .hero-inner {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  .hero-mark {
+    order: 2;
+  }
+
+  .hero-mark img {
+    width: min(100%, 420px);
+  }
+}
+
+/* ---------- About / The den ---------- */
+.section-den {
+  background: var(--cream);
+}
+
+.den-card {
+  background: var(--cream-2);
+  border: 1px solid rgb(35 39 30 / 0.08);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.den-card p {
+  margin: 0;
+}
+
+/* ---------- Ink panels (showcase + footer): flipped scheme ---------- */
+.panel-ink,
+.site-footer {
+  --grid-line: rgb(250 246 236 / 0.06);
+  background-color: var(--ink);
+  color: var(--cream);
+}
+
+.panel-ink a,
+.site-footer a {
+  color: var(--fox-green);
+  text-decoration-color: var(--fox-green);
+}
+
+.panel-ink a:hover,
+.site-footer a:hover {
+  color: var(--fox-green);
+  /* Lighter crimson tint: #C9304C is only 2.91:1 on ink; #D9536C is ~3.9:1 */
+  text-decoration-color: #D9536C;
+}
+
+/* Buttons keep their own label color on ink panels — the link rules above
+   must not repaint the primary CTA green-on-crimson. */
+.panel-ink .btn-primary,
+.panel-ink .btn-primary:hover,
+.panel-ink .btn-primary:focus-visible,
+.site-footer .btn-primary,
+.site-footer .btn-primary:hover,
+.site-footer .btn-primary:focus-visible {
+  color: #FFFFFF;
+}
+
+.panel-ink .eyebrow,
+.site-footer .eyebrow {
+  color: var(--fox-green);
+}
+
+/* The facet: one diagonal, always the same slope (rising left to right) */
+.panel-ink {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--facet)), 0 100%);
+  padding-bottom: calc(var(--section-pad) + var(--facet));
+}
+
+/* ---------- Wrestling City Tactics showcase ---------- */
+.wct-grid {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+.wct-copy {
+  min-width: 0;
+}
+
+.hook {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h3);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--fox-green);
+  max-width: 28ch;
+}
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.badge {
+  background: var(--crimson);
+  color: #FFFFFF;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35em 0.9em;
+  border-radius: 999px;
+}
+
+.status-note {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: rgb(250 246 236 / 0.78);
+}
+
+.notify {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.75rem;
+}
+
+.notify-tail {
+  color: var(--cream);
+  max-width: 30ch;
+}
+
+.wct-vignette svg {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 56rem) {
+  .wct-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 6fr);
+  }
+}
+
+/* ---------- What we do ---------- */
+.section-services {
+  background: var(--cream);
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.card {
+  background: var(--cream-2);
+  border: 1px solid rgb(35 39 30 / 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgb(35 39 30 / 0.12);
+}
+
+.card h3 {
+  margin-top: 1.25rem;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card-glyph svg {
+  width: 48px;
+  height: 48px;
+}
+
+@media (min-width: 48rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  clip-path: polygon(0 var(--facet), 100% 0, 100% 100%, 0 100%);
+  padding-top: calc(var(--section-pad) * 0.6 + var(--facet));
+  padding-bottom: calc(var(--section-pad) * 0.6);
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-brand img {
+  width: 48px;
+  height: 48px;
+}
+
+.site-footer .brand-name {
+  color: var(--cream);
+}
+
+.site-footer .brand-name span {
+  color: var(--fox-green);
+}
+
+.footer-contact {
+  font-size: var(--text-lead);
+  margin: 0;
+}
+
+.signoff {
+  color: rgb(250 246 236 / 0.78);
+  margin: 0;
+}
+
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  border-top: 1px solid rgb(250 246 236 / 0.15);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.legal {
+  font-size: var(--text-small);
+  color: rgb(250 246 236 / 0.78);
+  margin: 0;
+}
+
+.domain {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--fox-green);
+  margin: 0;
+}
+
+/* ---------- Scroll reveal (CSS-only, progressive enhancement) ---------- */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fade-up both cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Reduced motion: nothing moves ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

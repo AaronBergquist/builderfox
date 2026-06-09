@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 19 200 200" role="img" aria-label="BuilderFox fox mark favicon">
+  <title>BuilderFox</title>
+  <!-- Simplified mark tuned for 16-32px: tighter crop, enlarged eyes and nose. -->
+  <polygon fill="#79A84B" points="40,26 90,76 150,76 200,26 212,118 156,158 120,212 84,158 28,118"/>
+  <polygon fill="#C9304C" points="40,26 59,97 28,118"/>
+  <polygon fill="#C9304C" points="200,26 212,118 181,97"/>
+  <polygon fill="#C9304C" points="96,76 144,76 120,108"/>
+  <polygon fill="#23271E" points="61,132 83,114 105,132 83,150"/>
+  <polygon fill="#23271E" points="135,132 157,114 179,132 157,150"/>
+  <polygon fill="#23271E" points="120,166 137,186 120,212 103,186"/>
+</svg>
