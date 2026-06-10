@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
   <url>
     <loc>https://builderfox.com/</loc>
   </url>
-{%- for item in collections.all %}
+{%- for item in collections.all | sort(attribute='url') %}
 {%- if item.url and "." not in item.url %}
   <url>
     <loc>https://builderfox.com{{ item.url }}</loc>
