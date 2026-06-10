@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<article class="section article-page" aria-labelledby="post-title">
+  <div class="container">
+    <header class="article-header reveal">
+      <p class="eyebrow">// From the Den — dev blog</p>
+      <h1 id="post-title">{{ title }}</h1>
+      <p class="post-date"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+    </header>
+    <div class="article-body reveal">
+      {{ content | safe }}
+    </div>
+    <p class="back-link-row reveal"><a class="back-link" href="/blog/">&larr; All updates</a></p>
+  </div>
+</article>

@@ -609,6 +609,172 @@ a:hover {
   }
 }
 
+/* ==========================================================================
+   Subpages — game overview + dev blog (additive only; rules above unchanged)
+   ========================================================================== */
+
+/* ---------- Page hero (ink panel: title lockup + cover art) ---------- */
+/* .panel-ink supplies the bottom pad (+ facet); the top pad lives here so the
+   first screen breathes like the homepage hero. */
+.page-hero {
+  padding-top: clamp(2.5rem, 4vw + 1.5rem, 5.5rem);
+}
+
+.page-hero-inner {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.page-hero-copy {
+  min-width: 0;
+  max-width: 38rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 1.1rem + 5vw, 4.25rem);
+}
+
+.standfirst {
+  font-size: var(--text-lead);
+  max-width: 65ch;
+  margin-top: 1.25rem;
+}
+
+.page-hero-art {
+  min-width: 0;
+}
+
+.wct-cover-frame {
+  margin: 0;
+  width: min(100%, 19rem);
+  margin-inline: auto;
+}
+
+.wct-cover-frame img,
+.wct-cover-frame svg {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgb(143 190 95 / 0.45);
+  box-shadow:
+    0 0 0 6px rgb(121 168 75 / 0.14),
+    0 24px 48px rgb(0 0 0 / 0.5);
+}
+
+@media (min-width: 56rem) {
+  .page-hero-inner {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  .wct-cover-frame {
+    width: min(100%, 23rem);
+  }
+}
+
+/* ---------- Pillar grid (reuses .card tokens) ---------- */
+.pillar-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pillar-grid .card p {
+  max-width: 65ch;
+}
+
+/* ---------- Blog index ---------- */
+.post-list {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.post-card {
+  background: var(--cream-2);
+  border: 1px solid rgb(35 39 30 / 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.post-card-title {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.post-card-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card-title a:hover,
+.post-card-title a:focus-visible {
+  color: var(--crimson);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.15em;
+}
+
+.post-card-desc {
+  margin: 0;
+  max-width: 65ch;
+}
+
+.post-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--moss);
+  margin: 0 0 0.75rem;
+}
+
+/* Moss is 4.69:1 on cream but only 4.33:1 on the card's cream-2 — nudge
+   darker inside cards to clear WCAG AA (4.70:1 on #F3EDDD). */
+.post-card .post-date {
+  color: #4A7429;
+}
+
+.list-note {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--moss);
+  margin: 2.5rem 0 0;
+}
+
+/* ---------- Article (blog post) ---------- */
+.article-header {
+  margin-bottom: 2.5rem;
+}
+
+.article-header .post-date {
+  margin: 0;
+}
+
+.article-body {
+  max-width: 65ch;
+}
+
+.article-body p {
+  margin-bottom: 1.25rem;
+}
+
+.back-link-row {
+  margin: 3rem 0 0;
+}
+
+.back-link {
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+}
+
 /* ---------- Reduced motion: nothing moves ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,

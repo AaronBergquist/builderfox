@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+permalink: /blog/
+title: From the Den
+metaTitle: From the Den — BuilderFox Dev Blog
+description: "The BuilderFox dev blog: design deep-dives, roster reveals, and milestone updates from Wrestling City Tactics. Posted when it's real, not on a schedule."
+---
+    <section class="section blog-index grid-bg" aria-labelledby="blog-title">
+      <div class="container">
+        <header class="page-header reveal">
+          <p class="eyebrow">// BuilderFox dev blog</p>
+          <h1 id="blog-title">From the Den</h1>
+          <p class="lead">Major updates from BuilderFox &mdash; design deep-dives, roster reveals, and honest milestone reports from Wrestling City Tactics.</p>
+        </header>
+        <ol class="post-list reveal" reversed>
+          {%- for post in collections.post | reverse %}
+          <li class="post-card">
+            <p class="post-date"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
+            <h2 class="post-card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            <p class="post-card-desc">{{ post.data.description }}</p>
+          </li>
+          {%- endfor %}
+        </ol>
+        <p class="list-note">That&rsquo;s everything so far. We post on milestones, not a schedule.</p>
+      </div>
+    </section>

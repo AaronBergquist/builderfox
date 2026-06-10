@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{%- set htmlTitle = metaTitle or (title + " — BuilderFox") %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ htmlTitle }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="https://builderfox.com{{ page.url }}">
+  <meta name="theme-color" content="#FAF6EC">
+
+  <meta property="og:type" content="{{ ogType or "website" }}">
+  <meta property="og:site_name" content="BuilderFox">
+  <meta property="og:title" content="{{ htmlTitle }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="https://builderfox.com{{ page.url }}">
+  <meta property="og:image" content="https://builderfox.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark on a cream tactical-grid background">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ htmlTitle }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="https://builderfox.com/assets/og-image.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="alternate" type="application/atom+xml" title="BuilderFox — Dev Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="/" aria-label="BuilderFox — home">
+        <img src="/assets/logo.svg" alt="" width="40" height="40">
+        <span class="brand-name">Builder<span>Fox</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/wrestling-city-tactics/"{% if page.url == "/wrestling-city-tactics/" %} aria-current="page"{% endif %}>Wrestling City Tactics</a>
+        <a href="/blog/"{% if page.url == "/blog/" %} aria-current="page"{% elif "/blog/" in page.url %} aria-current="true"{% endif %}>Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+{{ content | safe }}
+  </main>
+
+  <footer id="contact" class="site-footer grid-bg">
+    <h2 class="visually-hidden">Contact</h2>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo.svg" alt="" width="48" height="48">
+        <span class="brand-name">Builder<span>Fox</span></span>
+      </div>
+      <p class="footer-contact">Got a move to discuss? <a href="mailto:aaron@builderfox.com">aaron@builderfox.com</a></p>
+      <p class="signoff">Built in the den. Plotted everywhere else.</p>
+      <div class="footer-meta">
+        <p class="legal">&copy; 2026 BuilderFox. All artwork original. No likenesses harmed.</p>
+        <p class="domain">builderfox.com</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
