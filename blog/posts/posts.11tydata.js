@@ -6,5 +6,6 @@
 module.exports = {
 	layout: "layouts/post.njk",
 	tags: "post",
+	schema: "post", // BlogPosting + BreadcrumbList JSON-LD (see layouts/base.njk)
 	permalink: (data) => `/blog/${data.page.fileSlug}/`,
 };

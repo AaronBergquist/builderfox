@@ -4,6 +4,22 @@ permalink: /wrestling-city-tactics/
 title: Wrestling City Tactics
 metaTitle: Wrestling City Tactics — A Tactics RPG from BuilderFox
 description: "Wrestling City Tactics: a turn-based tactics RPG of grid combat, original personas, faction building, and kayfabe drama. In production at BuilderFox."
+schema: game
+ogImage: "https://builderfox.com/assets/wct-cover.jpg"
+ogImageWidth: 768
+ogImageHeight: 1152
+ogImageAlt: "Wrestling City Tactics cover art: stylized original wrestlers — a masked luchador wearing a championship belt, a fierce brawler, and a blue-singlet powerhouse — squaring up over a night-city skyline above the ring ropes"
+faqs:
+  - q: "What is Wrestling City Tactics?"
+    a: "Wrestling City Tactics is a turn-based tactics RPG from BuilderFox. Matches play out on a grid, turn by turn, and every result feeds a city-wide wrestling storyline — position wins the match, drama wins the city."
+  - q: "What kind of game is it?"
+    a: "Turn-based tactics with RPG depth: grid-based combat, a roster of original wrestling personas to scout and develop, stables and factions to build, and kayfabe storylines that react to every win, loss, and betrayal."
+  - q: "Is there a release date?"
+    a: "Not yet. The game is in production, and we don't announce dates we can't keep — it ships when it's sharp. Join the notify list (email aaron@builderfox.com) and you'll hear the bell first."
+  - q: "Who is making Wrestling City Tactics?"
+    a: "BuilderFox — a creative agency that builds and publishes digital games, founded by Aaron. Wrestling City Tactics is our first title: original systems, original art, original stories."
+  - q: "Are the wrestlers real people?"
+    a: "No. Every wrestler in the city is an original persona created for the game — no real-world likenesses, no licensed legends, no borrowed faces. The gimmicks are ours, and the lawyers sleep fine."
 ---
     <!-- 1. PAGE HERO -->
     <section class="page-hero panel-ink grid-bg" aria-labelledby="wct-page-title">
@@ -157,6 +173,22 @@ description: "Wrestling City Tactics: a turn-based tactics RPG of grid combat, o
               <polygon points="324,151 346,162 324,173 302,162" fill="#D9536C"/>
             </g>
           </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FAQ -->
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container reveal">
+        <p class="eyebrow">// Sector 04 &mdash; Quick answers</p>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <div class="faq-list">
+          {%- for item in faqs %}
+          <article class="card faq-item">
+            <h3>{{ item.q }}</h3>
+            <p>{{ item.a }}</p>
+          </article>
+          {%- endfor %}
         </div>
       </div>
     </section>

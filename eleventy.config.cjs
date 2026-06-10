@@ -6,6 +6,8 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("index.html");
 	eleventyConfig.addPassthroughCopy("assets");
 	eleventyConfig.addPassthroughCopy("styles.css");
+	eleventyConfig.addPassthroughCopy("robots.txt");
+	eleventyConfig.addPassthroughCopy("llms.txt");
 
 	// Human-readable dates for blog templates (UTC so YAML dates don't drift)
 	eleventyConfig.addFilter("readableDate", (dateObj) =>

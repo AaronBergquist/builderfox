@@ -61,6 +61,31 @@ Deployed on Vercel, auto-built from GitHub `main`. `vercel.json` sets the
 build command (`npx @11ty/eleventy`), the output directory (`_site`), and
 enables `cleanUrls`.
 
+## SEO / AEO
+
+The site ships with search- and AI-crawler-friendly plumbing, all generated at
+build time:
+
+- **`/sitemap.xml`** — built from `sitemap.njk` over all Eleventy pages
+  (homepage added explicitly since `index.html` is passthrough-copied).
+- **`/robots.txt`** — allows everyone, with an explicit allow group for AI
+  crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.), and points at the sitemap.
+- **`/llms.txt`** — concise machine-readable site summary per the llms.txt
+  convention.
+- **JSON-LD structured data** — one `@graph` script per page:
+  Organization + WebSite everywhere; VideoGame + BreadcrumbList + FAQPage on
+  the game page; Blog on `/blog/`; BlogPosting + BreadcrumbList on posts
+  (emitted by `layouts/base.njk` via the `schema` front-matter key; the game
+  page FAQ renders visible Q&As and FAQPage JSON-LD from the same `faqs`
+  front-matter data, so they can never drift apart).
+- **www redirect** — `vercel.json` 308-redirects `www.builderfox.com/*` to the
+  apex domain.
+- **404** — `404.njk` builds `_site/404.html`, which Vercel serves
+  automatically for missing static paths.
+
+Posts can set an optional `metaDescription` front-matter field when the
+on-page `description` is shorter than the 120–155 characters meta tags want.
+
 ## Brand tokens
 
 | Token | Hex |

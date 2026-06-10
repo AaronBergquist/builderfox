@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 {%- set htmlTitle = metaTitle or (title + " — BuilderFox") %}
+{%- set metaDesc = metaDescription or description %}
+{%- set canonicalUrl = "https://builderfox.com" + page.url %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ htmlTitle }}</title>
-  <meta name="description" content="{{ description }}">
-  <link rel="canonical" href="https://builderfox.com{{ page.url }}">
+  <meta name="description" content="{{ metaDesc }}">
+  {%- if noindex %}
+  <meta name="robots" content="noindex">
+  {%- else %}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{ canonicalUrl }}">
+  {%- endif %}
   <meta name="theme-color" content="#FAF6EC">
 
+  {%- set ogImg = ogImage or "https://builderfox.com/assets/og-image.png" %}
+  {%- set ogImgWidth = ogImageWidth or 1200 %}
+  {%- set ogImgHeight = ogImageHeight or 630 %}
+  {%- set ogImgAlt = ogImageAlt or "BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark on a cream tactical-grid background" %}
   <meta property="og:type" content="{{ ogType or "website" }}">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="BuilderFox">
   <meta property="og:title" content="{{ htmlTitle }}">
-  <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="https://builderfox.com{{ page.url }}">
-  <meta property="og:image" content="https://builderfox.com/assets/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark on a cream tactical-grid background">
+  <meta property="og:description" content="{{ metaDesc }}">
+  {%- if not noindex %}
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  {%- endif %}
+  <meta property="og:image" content="{{ ogImg }}">
+  <meta property="og:image:width" content="{{ ogImgWidth }}">
+  <meta property="og:image:height" content="{{ ogImgHeight }}">
+  <meta property="og:image:alt" content="{{ ogImgAlt }}">
+  {%- if ogType == "article" %}
+  <meta property="article:published_time" content="{{ page.date | isoDate }}">
+  {%- endif %}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ htmlTitle }}">
-  <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="https://builderfox.com/assets/og-image.png">
+  <meta name="twitter:description" content="{{ metaDesc }}">
+  <meta name="twitter:image" content="{{ ogImg }}">
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
@@ -31,6 +48,99 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://builderfox.com/#organization",
+        "name": "BuilderFox",
+        "url": "https://builderfox.com/",
+        "logo": "https://builderfox.com/assets/logo.svg",
+        "email": "aaron@builderfox.com",
+        "description": "BuilderFox is a creative agency that builds and publishes digital games — smart, tactical games where thinking is the fun part."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://builderfox.com/#website",
+        "name": "BuilderFox",
+        "url": "https://builderfox.com/",
+        "publisher": { "@id": "https://builderfox.com/#organization" }
+      }
+      {%- if schema == "game" %},
+      {
+        "@type": "VideoGame",
+        "@id": "{{ canonicalUrl }}#game",
+        "name": "Wrestling City Tactics",
+        "url": {{ canonicalUrl | dump | safe }},
+        "image": "https://builderfox.com/assets/wct-cover.jpg",
+        "description": {{ description | dump | safe }},
+        "genre": ["Turn-based tactics", "RPG", "Strategy"],
+        "author": { "@id": "https://builderfox.com/#organization" },
+        "publisher": { "@id": "https://builderfox.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://builderfox.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Wrestling City Tactics", "item": {{ canonicalUrl | dump | safe }} }
+        ]
+      }
+      {%- endif %}
+      {%- if faqs %},
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for item in faqs %}
+          {
+            "@type": "Question",
+            "name": {{ item.q | dump | safe }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ item.a | dump | safe }}
+            }
+          }{{ "," if not loop.last }}
+          {%- endfor %}
+        ]
+      }
+      {%- endif %}
+      {%- if schema == "blog" %},
+      {
+        "@type": "Blog",
+        "@id": "{{ canonicalUrl }}#blog",
+        "name": "From the Den — BuilderFox Dev Blog",
+        "url": {{ canonicalUrl | dump | safe }},
+        "publisher": { "@id": "https://builderfox.com/#organization" }
+      }
+      {%- endif %}
+      {%- if schema == "post" %},
+      {
+        "@type": "BlogPosting",
+        "headline": {{ title | dump | safe }},
+        "description": {{ description | dump | safe }},
+        "datePublished": "{{ page.date | isoDate }}",
+        "dateModified": "{{ page.date | isoDate }}",
+        "author": { "@id": "https://builderfox.com/#organization" },
+        "publisher": { "@id": "https://builderfox.com/#organization" },
+        "mainEntityOfPage": {{ canonicalUrl | dump | safe }},
+        "image": "https://builderfox.com/assets/og-image.png",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://builderfox.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://builderfox.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }}, "item": {{ canonicalUrl | dump | safe }} }
+        ]
+      }
+      {%- endif %}
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

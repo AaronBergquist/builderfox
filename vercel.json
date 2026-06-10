@@ -1,5 +1,14 @@
 {
   "cleanUrls": true,
+  "trailingSlash": true,
   "buildCommand": "npx @11ty/eleventy",
-  "outputDirectory": "_site"
+  "outputDirectory": "_site",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.builderfox.com" }],
+      "destination": "https://builderfox.com/$1",
+      "permanent": true
+    }
+  ]
 }

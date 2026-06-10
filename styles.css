@@ -775,6 +775,23 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* ---------- FAQ (game page; reuses .card tokens — additive only) ---------- */
+.faq-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  max-width: 65ch;
+}
+
+.faq-item {
+  padding: 1.5rem 2rem;
+}
+
+.faq-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
 /* ---------- Reduced motion: nothing moves ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -1,9 +1,10 @@
 ---
 title: Opening Bell
 description: "BuilderFox cuts its first promo: who we are, why a wrestling tactics RPG, and what this blog is for."
+metaDescription: "BuilderFox cuts its first promo: who we are, why a wrestling tactics RPG, and what this dev blog is for — major updates only, no filler."
 date: 2026-06-09
 ---
-Every wrestling show opens the same way. The lights come up, the music hits, and somebody walks to the middle of the ring with a microphone to tell you exactly what they intend to do about it. Consider this our opening promo.
+Every wrestling show opens the same way. The lights come up, the music hits, and somebody walks to the middle of the ring with a microphone to tell you exactly what they intend to do about it. Consider this BuilderFox's opening promo.
 
 We're BuilderFox — a small creative agency that builds and publishes games where thinking is the fun part. Our first headliner is **Wrestling City Tactics**, a turn-based tactics RPG where you command a roster of original wrestling personas on a grid, build stables and factions, and steer the rivalries and storylines that decide who runs the city.
 

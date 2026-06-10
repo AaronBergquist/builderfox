@@ -1,0 +1,22 @@
+# BuilderFox
+
+> BuilderFox is a creative agency that builds and publishes digital games — smart, tactical games where thinking is the fun part. Its first title, Wrestling City Tactics, is a turn-based tactics RPG currently in production.
+
+## About
+
+- BuilderFox is a creative agency that builds and publishes digital games. Original art, original systems, original stories.
+- Founded by Aaron. Contact: aaron@builderfox.com.
+- No social media profiles yet; email is the official channel.
+
+## Wrestling City Tactics
+
+- A turn-based tactics RPG built on four pillars: grid-based combat, roster and faction (stable) building, original wrestling personas, and kayfabe storylines and drama that react to match results.
+- Every wrestler is an original creation — no real-world likenesses or licensed characters.
+- Status: in production. No release date, platforms, or pricing have been announced. A mailing list (email aaron@builderfox.com) notifies fans of milestones.
+
+## Key pages
+
+- [Home](https://builderfox.com/): Who BuilderFox is, what we build, and how to get in touch.
+- [Wrestling City Tactics](https://builderfox.com/wrestling-city-tactics/): Full game overview — feature pillars, production status, FAQ, and the notify list.
+- [From the Den (dev blog)](https://builderfox.com/blog/): Major updates only — design deep-dives, roster reveals, and milestone reports.
+- [Atom feed](https://builderfox.com/feed.xml): Machine-readable feed of dev blog posts.
