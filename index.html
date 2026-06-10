@@ -7,7 +7,8 @@
   <meta name="description" content="BuilderFox builds and publishes smart, tactical games. First up: Wrestling City Tactics — a turn-based RPG where the ring meets the grid. Notify me.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://builderfox.com/">
-  <meta name="theme-color" content="#FAF6EC">
+  <meta name="theme-color" content="#0B1810">
+  <script>document.documentElement.classList.add('js');</script>
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -18,7 +19,7 @@
   <meta property="og:image" content="https://builderfox.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark on a cream tactical-grid background">
+  <meta property="og:image:alt" content="BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark in cream and lime on a deep pine-green board with a faint tactical grid and soft pools of stadium light">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BuilderFox — Games That Think Back">
   <meta name="twitter:description" content="BuilderFox builds and publishes smart, tactical games. First up: Wrestling City Tactics — a turn-based RPG where the ring meets the grid. Notify me.">
@@ -30,8 +31,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Inter:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="assets/theme.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -58,12 +60,21 @@
   </script>
 </head>
 <body>
+
+  <!-- the table: pine felt, ambient pools, vignette, grain -->
+  <div class="felt" aria-hidden="true">
+    <div class="felt-pools"></div>
+    <div class="felt-weave"></div>
+    <div class="felt-vignette"></div>
+    <div class="felt-grain"></div>
+  </div>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="#main" aria-label="BuilderFox — home">
-        <img src="assets/logo.svg" alt="" width="40" height="40">
+        <span class="brand-mark"><img src="assets/logo.svg" alt="" width="36" height="36"></span>
         <span class="brand-name">Builder<span>Fox</span></span>
       </a>
       <nav class="site-nav" aria-label="Primary">
@@ -73,142 +84,221 @@
         <a href="/blog/">Blog</a>
         <a href="#contact">Contact</a>
       </nav>
+      <span class="turnchip" aria-hidden="true">Turn&nbsp;<b data-turnview>01</b><i>/04</i></span>
+    </div>
+    <!-- board ruler: the page sits on these columns -->
+    <div class="ruler" aria-hidden="true">
+      <div class="container ruler-row">
+        <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span>
+        <span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span>
+      </div>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- 1. HERO -->
-    <section class="hero grid-bg" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-copy reveal">
-          <h1 id="hero-title">Games that think back<span class="dot">.</span></h1>
-          <p class="lead">BuilderFox is a creative agency that builds and publishes games where thinking is the fun part. Smart systems, big personalities, no wasted turns.</p>
-          <p class="cta-row">
-            <a class="btn btn-primary" href="#wct">See Wrestling City Tactics</a>
-          </p>
+    <!-- 1. HERO — the match opens on the board itself -->
+    <section class="hero" aria-labelledby="hero-title" data-turn="01">
+
+      <!-- isometric table diorama: the fox is the active unit -->
+      <div class="hero-board" aria-hidden="true">
+        <div class="hb-plane">
+          <div class="hb-cell lit"   style="--c:3; --r:2"></div>
+          <div class="hb-cell lit"   style="--c:2; --r:3"></div>
+          <div class="hb-cell lit l2" style="--c:3; --r:3"></div>
+          <div class="hb-cell lit l3" style="--c:4; --r:4"></div>
+          <div class="hb-cell target" style="--c:6; --r:5"></div>
+          <div class="hb-ping" style="--c:6; --r:5"></div>
+
+          <svg class="hb-path" viewBox="0 0 576 576" width="576" height="576">
+            <path d="M160 160 L288 160 L288 288 L416 288 L416 352"
+                  fill="none" stroke="#C8FF4F" stroke-opacity="0.8" stroke-width="2.5"
+                  stroke-dasharray="7 8" class="march"/>
+            <circle r="4.5" fill="#E2FF8F" class="runner">
+              <animateMotion dur="3.4s" repeatCount="indefinite" rotate="0"
+                path="M160 160 L288 160 L288 288 L416 288 L416 352"/>
+            </circle>
+          </svg>
+
+          <!-- the fox: active unit, standing on its cell -->
+          <div class="hb-unit hb-fox" style="--c:2; --r:2">
+            <div class="up">
+              <span class="unit-label">Fox-01 · Active</span>
+              <img src="assets/logo.svg" alt="" width="230" height="230">
+            </div>
+          </div>
+          <!-- rival unit on the targeted cell -->
+          <div class="hb-unit hb-rival targeted" style="--c:6; --r:5">
+            <div class="up up-standee"><span class="standee s-red"></span></div>
+          </div>
+          <div class="hb-unit hb-ally" style="--c:0; --r:4">
+            <div class="up up-standee"><span class="standee s-green"></span></div>
+          </div>
         </div>
-        <div class="hero-mark reveal">
-          <img src="assets/logo.svg" alt="BuilderFox mark: a warm green fox head in profile — tall ear, cut-out eye, jagged cheek fur — set within a sweeping crescent arc that tapers under a single crimson ring" width="420" height="420">
+      </div>
+
+      <div class="container hero-content">
+        <p class="turn-tag" aria-hidden="true"><span class="slashes">//</span> Turn 01 — your move</p>
+        <h1 id="hero-title">
+          <span class="line-mask"><span class="line">Games that</span></span>
+          <span class="line-mask"><span class="line line-accent">think back<span class="dot">.</span></span></span>
+        </h1>
+        <p class="lead">BuilderFox is a creative agency that builds and publishes games where thinking is the fun part. Smart systems, big personalities, no wasted turns.</p>
+        <p class="cta-row">
+          <a class="btn btn-primary" href="#wct">See Wrestling City Tactics</a>
+        </p>
+      </div>
+
+      <!-- match-state HUD: live game state instead of a marquee -->
+      <div class="hud" aria-hidden="true">
+        <div class="container hud-row">
+          <span class="hud-seg hud-live"><i class="live-dot"></i>Match live</span>
+          <span class="hud-seg">Turn <b>01</b><em>/04</em></span>
+          <span class="hud-seg hud-wide">Unit <b class="hud-lime">Fox-01</b></span>
+          <span class="hud-seg">AP <span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip"></i></span></span>
+          <span class="hud-seg hud-wide">Objective — <b class="hud-lime">Wrestling City Tactics</b></span>
+          <span class="hud-seg hud-end hud-red">In production</span>
         </div>
       </div>
     </section>
 
     <!-- 2. ABOUT / ETHOS -->
-    <section id="den" class="section section-den" aria-labelledby="den-title">
-      <div class="container reveal">
-        <p class="eyebrow">// Sector 01 — Ethos</p>
-        <h2 id="den-title">The den</h2>
-        <div class="prose den-card">
-          <p>We&rsquo;re BuilderFox &mdash; a small agency with a simple conviction: the best games respect your brain. We build worlds where a clever plan beats a fast thumb, where characters have agendas, and where every choice leaves a mark on the board. We don&rsquo;t chase trends; we set traps for them. Original art, original systems, original stories &mdash; designed with cunning, finished with care, and shipped when they&rsquo;re sharp. Strategy isn&rsquo;t a genre to us. It&rsquo;s a personality.</p>
+    <section id="den" class="section section-den" aria-labelledby="den-title" data-turn="02">
+      <div class="container field">
+        <header class="section-head" data-num="01">
+          <p class="eyebrow"><span class="slashes">//</span> Sector 01 — Ethos</p>
+          <h2 id="den-title">The den</h2>
+        </header>
+        <div class="den-grid">
+          <div class="prose den-card cellframe reveal" data-tilt="3">
+            <span class="cell-tag" aria-hidden="true">A2</span>
+            <div class="den-prose">
+              <p>We&rsquo;re BuilderFox &mdash; a small agency with a simple conviction: <strong>the best games respect your brain.</strong> We build worlds where a clever plan beats a fast thumb, where characters have agendas, and where every choice leaves a mark on the board. <em class="trap">We don&rsquo;t chase trends; we set traps for them.</em> Original art, original systems, original stories &mdash; designed with cunning, finished with care, and shipped when they&rsquo;re sharp. Strategy isn&rsquo;t a genre to us. It&rsquo;s a personality.</p>
+            </div>
+          </div>
+          <div class="den-side" aria-hidden="true">
+            <div class="plot-cell lit"></div>
+            <div class="plot-cell lit l2"></div>
+            <div class="plot-cell target"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 3. SHOWCASE — WRESTLING CITY TACTICS -->
-    <section id="wct" class="section panel-ink grid-bg" aria-labelledby="wct-title">
-      <div class="container wct-grid">
-        <div class="wct-copy reveal">
-          <p class="eyebrow">// Sector 02 — Showcase</p>
-          <h2 id="wct-title">Wrestling City Tactics</h2>
-          <p class="hook">The squared circle just became a grid.</p>
-          <p class="prose">Wrestling City Tactics is a turn-based tactics RPG where the drama is the strategy. Command a roster of original wrestling personas across grid-based arenas, where positioning sets up the spot and timing sells the finish. Scout talent, build your stable, level your stars, and steer rivalries that spill from the ring into the storyline. Win matches with your head. Win the city with your heel turns.</p>
-          <p class="status">
-            <span class="badge">In production</span>
-            <span class="status-note">Training montage underway.</span>
-          </p>
-          <p class="notify">
-            <a class="btn btn-primary" href="mailto:aaron@builderfox.com?subject=Notify%20me%20%E2%80%94%20Wrestling%20City%20Tactics">Join the notify list</a>
-            <span class="notify-tail">&mdash; be ringside when the bell rings.</span>
-            <a href="/wrestling-city-tactics/">Explore the game &rarr;</a>
-          </p>
-        </div>
-        <div class="wct-vignette reveal">
-          <svg viewBox="52 32 416 216" role="img" aria-label="Stylized isometric tactical grid: two green faceted unit tokens plot a dashed move path toward two crimson rival tokens, with a target cell outlined in crimson.">
-            <title>Wrestling City Tactics — tactical grid vignette</title>
-            <!-- board -->
-            <polygon points="260,44 452,140 260,236 68,140" fill="#FAF6EC" opacity="0.04"/>
-            <g stroke="#FAF6EC" stroke-opacity="0.18" stroke-width="1.5" fill="none">
-              <path d="M260 44 452 140 M228 60 420 156 M196 76 388 172 M164 92 356 188 M132 108 324 204 M100 124 292 220 M68 140 260 236"/>
-              <path d="M260 44 68 140 M292 60 100 156 M324 76 132 172 M356 92 164 188 M388 108 196 204 M420 124 228 220 M452 140 260 236"/>
-            </g>
-            <!-- movement range -->
-            <g fill="#79A84B" opacity="0.3">
-              <polygon points="228,124 260,140 228,156 196,140"/>
-              <polygon points="260,140 292,156 260,172 228,156"/>
-              <polygon points="292,156 324,172 292,188 260,172"/>
-            </g>
-            <!-- target cell -->
-            <polygon points="324,172 356,188 324,204 292,188" fill="#C9304C" fill-opacity="0.18" stroke="#C9304C" stroke-width="2.5"/>
-            <!-- move path -->
-            <polyline points="196,124 228,140 260,156 292,172" fill="none" stroke="#FAF6EC" stroke-opacity="0.75" stroke-width="2" stroke-dasharray="6 6"/>
-            <!-- green unit: active -->
-            <g>
-              <polygon points="174,98 196,109 196,135 174,124" fill="#79A84B"/>
-              <polygon points="218,98 196,109 196,135 218,124" fill="#587F35"/>
-              <polygon points="196,87 218,98 196,109 174,98" fill="#8FBE5F"/>
-              <polygon points="196,68 203,76 196,84 189,76" fill="#FAF6EC"/>
-            </g>
-            <!-- crimson unit -->
-            <g>
-              <polygon points="334,114 356,125 356,151 334,140" fill="#C9304C"/>
-              <polygon points="378,114 356,125 356,151 378,140" fill="#99243A"/>
-              <polygon points="356,103 378,114 356,125 334,114" fill="#D9536C"/>
-            </g>
-            <!-- green unit -->
-            <g>
-              <polygon points="110,130 132,141 132,167 110,156" fill="#79A84B"/>
-              <polygon points="154,130 132,141 132,167 154,156" fill="#587F35"/>
-              <polygon points="132,119 154,130 132,141 110,130" fill="#8FBE5F"/>
-            </g>
-            <!-- crimson unit: targeted -->
-            <g>
-              <polygon points="302,162 324,173 324,199 302,188" fill="#C9304C"/>
-              <polygon points="346,162 324,173 324,199 346,188" fill="#99243A"/>
-              <polygon points="324,151 346,162 324,173 302,162" fill="#D9536C"/>
-            </g>
-          </svg>
+    <section id="wct" class="section section-wct" aria-labelledby="wct-title" data-turn="03">
+      <div class="container">
+        <div class="arena">
+          <header class="section-head" data-num="02">
+            <p class="eyebrow"><span class="slashes">//</span> Sector 02 — Showcase</p>
+            <h2 id="wct-title">Wrestling City Tactics</h2>
+            <p class="hook">The squared circle just became a grid.</p>
+          </header>
+
+          <div class="wct-bento">
+            <div class="bento-cell cell-copy reveal">
+              <span class="cell-tag" aria-hidden="true">A3</span>
+              <p class="prose">Wrestling City Tactics is a turn-based tactics RPG where the drama is the strategy. Command a roster of original wrestling personas across grid-based arenas, where positioning sets up the spot and timing sells the finish. Scout talent, build your stable, level your stars, and steer rivalries that spill from the ring into the storyline. Win matches with your head. Win the city with your heel turns.</p>
+              <p class="status">
+                <span class="badge"><i class="live-dot" aria-hidden="true"></i>In production</span>
+                <span class="status-note">Training montage underway.</span>
+              </p>
+              <p class="notify">
+                <a class="btn btn-primary" href="mailto:aaron@builderfox.com?subject=Notify%20me%20%E2%80%94%20Wrestling%20City%20Tactics">Join the notify list</a>
+                <span class="notify-tail">&mdash; be ringside when the bell rings.</span>
+                <a class="arrow-link" href="/wrestling-city-tactics/">Explore the game &rarr;</a>
+              </p>
+            </div>
+
+            <div class="bento-cell cell-cover reveal" data-tilt="7">
+              <span class="cell-tag cell-tag-dark" aria-hidden="true">H3</span>
+              <div class="cover-tilt">
+                <img src="assets/wct-cover.jpg" alt="Wrestling City Tactics cover art: stylized original wrestlers &mdash; a masked luchador wearing a championship belt, a fierce brawler, and a blue-singlet powerhouse &mdash; squaring up over a night-city skyline above the ring ropes" width="576" height="864" loading="lazy">
+                <span class="cover-glare" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <figure class="bento-cell cell-board" role="img"
+                    aria-label="Stylized isometric tactical grid: two green faceted unit tokens plot a dashed move path toward two crimson rival tokens, with a target cell outlined in crimson.">
+              <span class="cell-tag" aria-hidden="true">A4</span>
+              <div class="board-scene" aria-hidden="true">
+                <div class="board-float">
+                  <div class="board-plane">
+                    <span class="edge-label el-a">A</span><span class="edge-label el-b">B</span>
+                    <span class="edge-label el-c">C</span><span class="edge-label el-d">D</span>
+                    <span class="edge-label el-1">1</span><span class="edge-label el-2">2</span>
+                    <span class="edge-label el-3">3</span><span class="edge-label el-4">4</span>
+
+                    <div class="bp-cell lit" style="--c:3; --r:2"></div>
+                    <div class="bp-cell lit" style="--c:3; --r:3"></div>
+                    <div class="bp-cell lit lit-2" style="--c:4; --r:3"></div>
+                    <div class="bp-cell target" style="--c:5; --r:5"></div>
+
+                    <svg class="board-path" viewBox="0 0 416 416" width="416" height="416">
+                      <path id="mv" d="M130 130 L182 130 L182 182 L234 182 L234 234 L286 234 L286 286"
+                            fill="none" stroke="#C8FF4F" stroke-opacity="0.85" stroke-width="2.5"
+                            stroke-dasharray="7 8" class="march"/>
+                      <circle r="4.5" fill="#E2FF8F" class="runner">
+                        <animateMotion dur="3.2s" repeatCount="indefinite" rotate="0"
+                          path="M130 130 L182 130 L182 182 L234 182 L234 234 L286 234 L286 286"/>
+                      </circle>
+                    </svg>
+
+                    <div class="token t-green active" style="--c:2; --r:2"><span class="standee"></span></div>
+                    <div class="token t-green" style="--c:1; --r:4"><span class="standee"></span></div>
+                    <div class="token t-red" style="--c:6; --r:3"><span class="standee"></span></div>
+                    <div class="token t-red targeted" style="--c:5; --r:5"><span class="standee"></span></div>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 4. WHAT WE DO -->
-    <section id="what-we-do" class="section section-services" aria-labelledby="services-title">
-      <div class="container reveal">
-        <p class="eyebrow">// Sector 03 — Capabilities</p>
-        <h2 id="services-title">What we do</h2>
+    <section id="what-we-do" class="section section-services" aria-labelledby="services-title" data-turn="04">
+      <div class="container field">
+        <header class="section-head" data-num="03">
+          <p class="eyebrow"><span class="slashes">//</span> Sector 03 — Capabilities</p>
+          <h2 id="services-title">What we do</h2>
+        </header>
         <div class="cards">
-          <article class="card">
+          <article class="card cellframe reveal" data-tilt="5">
+            <span class="cell-tag" aria-hidden="true">A5</span>
             <div class="card-glyph">
               <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
-                <polygon points="24,6 24,24 6,24" fill="#79A84B"/>
-                <polygon points="24,6 42,24 24,24" fill="#8FBE5F"/>
-                <polygon points="6,24 24,24 24,42" fill="#4E7A2E"/>
-                <polygon points="24,24 42,24 24,42" fill="#79A84B"/>
+                <polygon points="24,6 24,24 6,24" fill="#9FE03A"/>
+                <polygon points="24,6 42,24 24,24" fill="#C8FF4F"/>
+                <polygon points="6,24 24,24 24,42" fill="#3E6B2A"/>
+                <polygon points="24,24 42,24 24,42" fill="#9FE03A"/>
               </svg>
             </div>
             <h3>Game Development</h3>
             <p>Original systems, built from scratch &mdash; mechanics that reward the player who plans two moves ahead.</p>
           </article>
-          <article class="card">
+          <article class="card cellframe reveal" data-tilt="5">
+            <span class="cell-tag" aria-hidden="true">E5</span>
             <div class="card-glyph">
               <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
-                <polygon points="44,8 4,26 22,31" fill="#79A84B"/>
-                <polygon points="44,8 22,31 28,42" fill="#4E7A2E"/>
+                <polygon points="44,8 4,26 22,31" fill="#9FE03A"/>
+                <polygon points="44,8 22,31 28,42" fill="#3E6B2A"/>
               </svg>
             </div>
             <h3>Publishing</h3>
             <p>We ship our own work and back games with brains &mdash; from first playtest to launch day.</p>
           </article>
-          <article class="card">
+          <article class="card cellframe reveal" data-tilt="5">
+            <span class="cell-tag" aria-hidden="true">I5</span>
             <div class="card-glyph">
               <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
-                <polygon points="20,5 34,12 20,19 6,12" fill="#8FBE5F"/>
-                <polygon points="6,12 20,19 20,35 6,28" fill="#4E7A2E"/>
-                <polygon points="34,12 20,19 20,35 34,28" fill="#79A84B"/>
-                <polygon points="38,20 46,24 38,28 30,24" fill="#8FBE5F"/>
-                <polygon points="30,24 38,28 38,38 30,34" fill="#4E7A2E"/>
-                <polygon points="46,24 38,28 38,38 46,34" fill="#79A84B"/>
+                <polygon points="20,5 34,12 20,19 6,12" fill="#C8FF4F"/>
+                <polygon points="6,12 20,19 20,35 6,28" fill="#3E6B2A"/>
+                <polygon points="34,12 20,19 20,35 34,28" fill="#9FE03A"/>
+                <polygon points="38,20 46,24 38,28 30,24" fill="#C8FF4F"/>
+                <polygon points="30,24 38,28 38,38 30,34" fill="#3E6B2A"/>
+                <polygon points="46,24 38,28 38,38 46,34" fill="#9FE03A"/>
               </svg>
             </div>
             <h3>World-Building</h3>
@@ -220,10 +310,12 @@
 
   </main>
 
-  <!-- 5. FOOTER -->
-  <footer id="contact" class="site-footer grid-bg">
+  <!-- 5. FOOTER — end of match -->
+  <footer id="contact" class="site-footer">
     <h2 class="visually-hidden">Contact</h2>
+    <p class="footer-ghost" aria-hidden="true">BuilderFox</p>
     <div class="container footer-grid">
+      <p class="match-end" aria-hidden="true"><span class="slashes">//</span> End of match — Turn 04/04</p>
       <div class="footer-brand">
         <img src="assets/logo.svg" alt="" width="48" height="48">
         <span class="brand-name">Builder<span>Fox</span></span>

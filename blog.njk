@@ -6,16 +6,17 @@ metaTitle: From the Den — BuilderFox Dev Blog
 description: "The BuilderFox dev blog: design deep-dives, roster reveals, and milestone updates from Wrestling City Tactics. Posted when it's real, not on a schedule."
 schema: blog
 ---
-    <section class="section blog-index grid-bg" aria-labelledby="blog-title">
+    <section class="section blog-index grid-bg" aria-labelledby="blog-title" data-turn="01">
       <div class="container">
         <header class="page-header reveal">
-          <p class="eyebrow">// BuilderFox dev blog</p>
+          <p class="eyebrow"><span class="slashes">//</span> BuilderFox dev blog</p>
           <h1 id="blog-title">From the Den</h1>
           <p class="lead">Major updates from BuilderFox &mdash; design deep-dives, roster reveals, and honest milestone reports from Wrestling City Tactics.</p>
         </header>
         <ol class="post-list reveal" reversed>
           {%- for post in collections.post | reverse %}
-          <li class="post-card">
+          <li class="post-card" data-tilt="4">
+            <span class="cell-tag" aria-hidden="true">B{{ loop.index }}</span>
             <p class="post-date"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
             <h2 class="post-card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
             <p class="post-card-desc">{{ post.data.description }}</p>

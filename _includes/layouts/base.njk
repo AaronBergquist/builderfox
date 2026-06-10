@@ -14,12 +14,13 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="{{ canonicalUrl }}">
   {%- endif %}
-  <meta name="theme-color" content="#FAF6EC">
+  <meta name="theme-color" content="#0B1810">
+  <script>document.documentElement.classList.add('js');</script>
 
   {%- set ogImg = ogImage or "https://builderfox.com/assets/og-image.png" %}
   {%- set ogImgWidth = ogImageWidth or 1200 %}
   {%- set ogImgHeight = ogImageHeight or 630 %}
-  {%- set ogImgAlt = ogImageAlt or "BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark on a cream tactical-grid background" %}
+  {%- set ogImgAlt = ogImageAlt or "BuilderFox mark — a green fox head in profile within a sweeping crescent arc, with a crimson ring accent below the jaw — beside the BuilderFox wordmark in cream and lime on a deep pine-green board with a faint tactical grid and soft pools of stadium light" %}
   <meta property="og:type" content="{{ ogType or "website" }}">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="BuilderFox">
@@ -46,8 +47,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Inter:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/assets/theme.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -143,12 +145,21 @@
   </script>
 </head>
 <body>
+
+  <!-- the table: pine felt, ambient pools, vignette, grain -->
+  <div class="felt" aria-hidden="true">
+    <div class="felt-pools"></div>
+    <div class="felt-weave"></div>
+    <div class="felt-vignette"></div>
+    <div class="felt-grain"></div>
+  </div>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="/" aria-label="BuilderFox — home">
-        <img src="/assets/logo.svg" alt="" width="40" height="40">
+        <span class="brand-mark"><img src="/assets/logo.svg" alt="" width="36" height="36"></span>
         <span class="brand-name">Builder<span>Fox</span></span>
       </a>
       <nav class="site-nav" aria-label="Primary">
@@ -157,6 +168,14 @@
         <a href="/blog/"{% if page.url == "/blog/" %} aria-current="page"{% elif "/blog/" in page.url %} aria-current="true"{% endif %}>Blog</a>
         <a href="#contact">Contact</a>
       </nav>
+      <span class="turnchip" aria-hidden="true">Turn&nbsp;<b data-turnview>01</b><i>/{{ turnTotal or "01" }}</i></span>
+    </div>
+    <!-- board ruler: the page sits on these columns -->
+    <div class="ruler" aria-hidden="true">
+      <div class="container ruler-row">
+        <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span>
+        <span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span>
+      </div>
     </div>
   </header>
 
@@ -164,9 +183,11 @@
 {{ content | safe }}
   </main>
 
-  <footer id="contact" class="site-footer grid-bg">
+  <footer id="contact" class="site-footer">
     <h2 class="visually-hidden">Contact</h2>
+    <p class="footer-ghost" aria-hidden="true">BuilderFox</p>
     <div class="container footer-grid">
+      <p class="match-end" aria-hidden="true"><span class="slashes">//</span> End of match &mdash; Turn {{ turnTotal or "01" }}/{{ turnTotal or "01" }}</p>
       <div class="footer-brand">
         <img src="/assets/logo.svg" alt="" width="48" height="48">
         <span class="brand-name">Builder<span>Fox</span></span>
